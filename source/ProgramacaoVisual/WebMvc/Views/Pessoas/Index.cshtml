@@ -1,21 +1,30 @@
 @model WebMvc.Models.PessoaViewModel
 @{
-    ViewData["Title"] = "Eerro";
+    ViewData["Title"] = "Index";
 }
-<table>
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Creat New</a>
+</p>
+
+<table class="table">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Nome</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
-    @foreach(var item in Model.Items)
-    {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Nome</td>
-            </tr>
-    }
+@foreach(var item in Model.Items) {
+    <tr>
+        <td>@item.Nome</td>
+        <td>
+            <a asp-action="Edit" asp-rout-id="@item.Id">Edit |</a>
+            <a asp-action="Details" asp-rout-id="@item.Id">Details |</a>
+            <a asp-action="Delete" asp-rout-id="@item.Id">Delete |</a>
+        </td>        
+    </tr>
+}
     </tbody>
-</table>
+    </table>
